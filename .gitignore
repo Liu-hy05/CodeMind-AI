@@ -1,0 +1,22 @@
+# IDEA
+.idea/
+*.iml
+
+# Maven
+target/
+*.jar
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+dist/

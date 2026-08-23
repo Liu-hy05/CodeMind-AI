@@ -7,7 +7,6 @@ target/
 *.jar
 
 # Logs
-logs/
 *.log
 
 # Environment

@@ -4,6 +4,7 @@ import com.codemind.common.result.Result;
 import com.codemind.user.dto.LoginDTO;
 import com.codemind.user.dto.RegisterDTO;
 import com.codemind.user.service.UserService;
+import com.codemind.user.vo.LoginVO;
 import com.codemind.user.vo.UserVO;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,12 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result<UserVO> login(
+    public Result<LoginVO> login(
             @Valid @RequestBody LoginDTO loginDTO) {
 
-        UserVO userVO = userService.login(loginDTO);
+        LoginVO loginVO = userService.login(loginDTO);
 
-        return Result.success(userVO);
+        return Result.success(loginVO);
     }
 
     @PostMapping("/register")

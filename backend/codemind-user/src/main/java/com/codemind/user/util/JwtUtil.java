@@ -1,6 +1,7 @@
 package com.codemind.user.util;
 
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -56,6 +57,24 @@ public class JwtUtil {
                 )
                 .signWith(secretKey)
                 .compact();
+    }
+
+    public Claims parseToken(String token){
+
+        return Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+
+    }
+
+    public Long getUserId(String token){
+
+        Claims claims = parseToken(token);
+
+        return claims.get("userId", Long.class);
+
     }
 
 }

@@ -1,26 +1,31 @@
-package com.codemind.user.entity;
+package com.codemind.user.vo;
 
 
 import lombok.Data;
 
 
 @Data
-public class User {
+public class AdminUserVO {
+
 
     private Long id;
 
+
     private String username;
 
-    private String password;
 
     private String role;
 
+
+    private Integer status;
+
+
     private String nickname;
+
 
     private String email;
 
-    private String phone;
 
-    private Integer status;
+    private String phone;
 
 }

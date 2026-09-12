@@ -5,6 +5,9 @@ import com.codemind.common.constants.UserConstants;
 import com.codemind.common.result.Result;
 import com.codemind.user.annotation.RequireRole;
 import com.codemind.user.context.UserContext;
+import com.codemind.user.service.UserService;
+import com.codemind.user.vo.UserVO;
+import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/test")
 public class TestController {
 
+    @Resource
+    private UserService userService;
 
     @GetMapping("/user")
     public Result<Long> getCurrentUser(){
@@ -40,5 +45,14 @@ public class TestController {
         return Result.success(
                 "管理员访问成功"
         );
+    }
+
+    @GetMapping("/info")
+    public Result<UserVO> info(){
+
+        return Result.success(
+                userService.getCurrentUser()
+        );
+
     }
 }

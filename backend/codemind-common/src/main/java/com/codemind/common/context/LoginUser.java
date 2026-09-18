@@ -1,4 +1,4 @@
-package com.codemind.user.context;
+package com.codemind.common.context;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

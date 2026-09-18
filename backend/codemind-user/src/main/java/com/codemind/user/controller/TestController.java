@@ -4,12 +4,10 @@ package com.codemind.user.controller;
 import com.codemind.common.constants.UserConstants;
 import com.codemind.common.result.Result;
 import com.codemind.user.annotation.RequireRole;
-import com.codemind.user.context.UserContext;
+import com.codemind.common.context.UserContext;
 import com.codemind.user.service.UserService;
 import com.codemind.user.vo.UserVO;
 import jakarta.annotation.Resource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 

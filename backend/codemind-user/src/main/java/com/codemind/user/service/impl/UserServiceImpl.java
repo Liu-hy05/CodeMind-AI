@@ -2,12 +2,12 @@ package com.codemind.user.service.impl;
 
 import com.codemind.common.constants.UserConstants;
 import com.codemind.common.exception.BusinessException;
-import com.codemind.user.context.UserContext;
+import com.codemind.common.context.UserContext;
+import com.codemind.common.util.JwtUtil;
 import com.codemind.user.dto.*;
 import com.codemind.user.entity.User;
 import com.codemind.user.mapper.UserMapper;
 import com.codemind.user.service.UserService;
-import com.codemind.user.util.JwtUtil;
 import com.codemind.user.vo.AdminUserVO;
 import com.codemind.user.vo.LoginVO;
 import com.codemind.user.vo.UserVO;

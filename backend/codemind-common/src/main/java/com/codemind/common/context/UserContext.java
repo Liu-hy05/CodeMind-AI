@@ -1,4 +1,4 @@
-package com.codemind.user.context;
+package com.codemind.common.context;
 
 public class UserContext {
 

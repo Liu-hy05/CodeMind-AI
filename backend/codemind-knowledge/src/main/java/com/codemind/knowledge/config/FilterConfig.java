@@ -1,4 +1,4 @@
-package com.codemind.user.config;
+package com.codemind.knowledge.config;
 
 
 import com.codemind.common.filter.JwtAuthenticationFilter;
@@ -19,14 +19,19 @@ public class FilterConfig {
     @Bean
     public FilterRegistrationBean<JwtAuthenticationFilter> jwtFilter(){
 
+
         FilterRegistrationBean<JwtAuthenticationFilter> registration =
                 new FilterRegistrationBean<>();
 
 
-        registration.setFilter(jwtAuthenticationFilter);
+        registration.setFilter(
+                jwtAuthenticationFilter
+        );
 
 
-        registration.addUrlPatterns("/*");
+        registration.addUrlPatterns(
+                "/*"
+        );
 
 
         registration.setOrder(1);

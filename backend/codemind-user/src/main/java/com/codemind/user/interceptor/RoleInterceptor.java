@@ -3,7 +3,7 @@ package com.codemind.user.interceptor;
 
 import com.codemind.common.result.Result;
 import com.codemind.user.annotation.RequireRole;
-import com.codemind.user.context.UserContext;
+import com.codemind.common.context.UserContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.codemind.user.util;
+package com.codemind.common.util;
 
 
 import io.jsonwebtoken.Claims;

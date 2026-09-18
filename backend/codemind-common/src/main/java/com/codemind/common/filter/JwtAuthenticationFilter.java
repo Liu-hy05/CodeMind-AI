@@ -1,22 +1,25 @@
-package com.codemind.user.filter;
+package com.codemind.common.filter;
 
 
+import com.codemind.common.context.LoginUser;
+import com.codemind.common.context.UserContext;
 import com.codemind.common.result.Result;
-import com.codemind.user.context.LoginUser;
-import com.codemind.user.context.UserContext;
-import com.codemind.user.util.JwtUtil;
+import com.codemind.common.util.JwtUtil;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
+
 import jakarta.annotation.Resource;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import tools.jackson.databind.ObjectMapper;
-
 
 import java.io.IOException;
 

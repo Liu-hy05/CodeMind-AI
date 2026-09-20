@@ -7,6 +7,7 @@ import com.codemind.knowledge.entity.Document;
 import com.codemind.knowledge.mapper.DocumentMapper;
 import com.codemind.knowledge.service.DocumentService;
 
+import com.codemind.knowledge.vo.DocumentVO;
 import jakarta.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class DocumentServiceImpl
 
 
     @Override
-    public void upload(
+    public DocumentVO upload(
             Long knowledgeId,
             MultipartFile file
     ) {
@@ -68,9 +69,27 @@ public class DocumentServiceImpl
                     file.getOriginalFilename();
 
 
+            String suffix = "";
+
+
+            if(filename != null
+                    && filename.contains(".")){
+
+                suffix =
+                        filename.substring(
+                                filename.lastIndexOf(".")
+                        );
+            }
+
+
+            String newFilename =
+                    java.util.UUID.randomUUID()
+                            + suffix;
+
+
             File target =
                     new File(
-                            FILE_PATH + filename
+                            FILE_PATH + newFilename
                     );
 
 
@@ -122,6 +141,32 @@ public class DocumentServiceImpl
                 );
 
             }
+
+            DocumentVO vo =
+                    new DocumentVO();
+
+
+            vo.setId(
+                    document.getId()
+            );
+
+
+            vo.setFilename(
+                    document.getFilename()
+            );
+
+
+            vo.setFileSize(
+                    document.getFileSize()
+            );
+
+
+            vo.setFileType(
+                    document.getFileType()
+            );
+
+
+            return vo;
 
 
         } catch (IOException e) {

@@ -4,6 +4,7 @@ package com.codemind.knowledge.controller;
 import com.codemind.common.result.Result;
 import com.codemind.knowledge.service.DocumentService;
 
+import com.codemind.knowledge.vo.DocumentVO;
 import jakarta.annotation.Resource;
 
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class DocumentController {
      * 上传文件
      */
     @PostMapping("/upload")
-    public Result<Void> upload(
+    public Result<DocumentVO> upload(
             @RequestParam("knowledgeId")
             Long knowledgeId,
 
@@ -32,13 +33,14 @@ public class DocumentController {
             MultipartFile file
     ){
 
-        documentService.upload(
-                knowledgeId,
-                file
-        );
+        DocumentVO vo =
+                documentService.upload(
+                        knowledgeId,
+                        file
+                );
 
 
-        return Result.success();
+        return Result.success(vo);
 
     }
 

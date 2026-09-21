@@ -8,11 +8,14 @@ import com.codemind.knowledge.service.DocumentParserService;
 import com.codemind.knowledge.service.DocumentProcessService;
 import com.codemind.knowledge.service.DocumentService;
 
+import com.codemind.knowledge.service.EmbeddingService;
 import com.codemind.knowledge.vo.DocumentVO;
 import jakarta.annotation.Resource;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 
 @RestController
@@ -33,6 +36,9 @@ public class DocumentController {
     @Resource
     private DocumentProcessService documentProcessService;
 
+    @Resource
+    private EmbeddingService embeddingService;
+
 
     /**
      * 上传文件
@@ -44,7 +50,7 @@ public class DocumentController {
 
             @RequestParam("file")
             MultipartFile file
-    ){
+    ) {
 
         DocumentVO vo =
                 documentService.upload(
@@ -60,7 +66,7 @@ public class DocumentController {
     @GetMapping("/parse/{id}")
     public Result<String> parse(
             @PathVariable("id") Long id
-    ){
+    ) {
 
         Document document =
                 documentMapper.selectById(id);
@@ -70,7 +76,7 @@ public class DocumentController {
                         + document.getFilePath()
         );
 
-        if(document == null){
+        if (document == null) {
 
             return Result.error(
                     "文档不存在"
@@ -92,13 +98,27 @@ public class DocumentController {
     @PostMapping("/process/{id}")
     public Result<Void> process(
             @PathVariable("id") Long id
-    ){
+    ) {
 
 
         documentProcessService.processDocument(id);
 
 
         return Result.success();
+
+    }
+
+    @GetMapping("/embed/test")
+    public Result<List<Float>> embedTest() {
+
+
+        List<Float> vector =
+                embeddingService.embed(
+                        "Java异常处理规范"
+                );
+
+
+        return Result.success(vector);
 
     }
 }

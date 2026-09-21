@@ -19,3 +19,12 @@ Thumbs.db
 # Node
 node_modules/
 dist/
+
+# Milvus data
+milvus/
+
+# MinIO data
+minio/
+
+# etcd data
+etcd/

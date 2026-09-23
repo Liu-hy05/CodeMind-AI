@@ -1,8 +1,8 @@
 package com.codemind.knowledge.config;
 
 
-import io.milvus.client.MilvusServiceClient;
-import io.milvus.param.ConnectParam;
+import io.milvus.v2.client.MilvusClientV2;
+import io.milvus.v2.client.ConnectConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,14 +22,23 @@ public class MilvusConfig {
 
 
     @Bean
-    public MilvusServiceClient milvusClient(){
+    public MilvusClientV2 milvusClient(){
 
 
-        return new MilvusServiceClient(
-                ConnectParam.newBuilder()
-                        .withHost(host)
-                        .withPort(port)
-                        .build()
+        ConnectConfig config =
+                ConnectConfig.builder()
+                        .uri(
+                                "http://"
+                                        + host
+                                        + ":"
+                                        + port
+                        )
+                        .build();
+
+
+
+        return new MilvusClientV2(
+                config
         );
 
     }

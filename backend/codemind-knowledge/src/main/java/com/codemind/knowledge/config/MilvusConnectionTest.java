@@ -1,7 +1,7 @@
 package com.codemind.knowledge.config;
 
 
-import io.milvus.client.MilvusServiceClient;
+import io.milvus.v2.client.MilvusClientV2;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,8 @@ public class MilvusConnectionTest {
 
 
     @Resource
-    private MilvusServiceClient milvusClient;
+    private MilvusClientV2 milvusClient;
+
 
 
     @PostConstruct
@@ -22,15 +23,16 @@ public class MilvusConnectionTest {
         System.out.println("======================");
 
         System.out.println(
-                "Milvus Client 创建成功"
+                "Milvus V2 Client 创建成功"
         );
+
 
         System.out.println(
                 milvusClient
         );
 
-        System.out.println("======================");
 
+        System.out.println("======================");
 
     }
 
